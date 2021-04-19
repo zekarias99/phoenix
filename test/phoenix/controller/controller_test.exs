@@ -594,6 +594,7 @@ defmodule Phoenix.Controller.ControllerTest do
     assert get_resp_header(conn, "x-download-options") == ["noopen"]
     assert get_resp_header(conn, "x-permitted-cross-domain-policies") == ["none"]
     assert get_resp_header(conn, "cross-origin-window-policy") == ["deny"]
+    assert get_resp_header(conn, "permissions-policy") == ["interest-cohort=()"]
 
     custom_headers = %{"x-frame-options" => "custom", "foo" => "bar"}
     conn = conn(:get, "/") |> put_secure_browser_headers(custom_headers)
@@ -602,6 +603,7 @@ defmodule Phoenix.Controller.ControllerTest do
     assert get_resp_header(conn, "x-download-options") == ["noopen"]
     assert get_resp_header(conn, "x-permitted-cross-domain-policies") == ["none"]
     assert get_resp_header(conn, "cross-origin-window-policy") == ["deny"]
+    assert get_resp_header(conn, "permissions-policy") == ["interest-cohort=()"]
     assert get_resp_header(conn, "foo") == ["bar"]
   end
 

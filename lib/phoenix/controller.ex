@@ -1101,6 +1101,9 @@ defmodule Phoenix.Controller do
       Adobe Flash Player’s access to data
     * `cross-origin-window-policy` - set to deny to avoid window
       control attacks
+    * `permissions-policy` - set to "interest-cohort=()" to deny the
+      inclusion of your site in the list of sites for Federated Learning
+      of Cohorts (aka FLoC) calculation
 
   A custom headers map may also be given to be merged with defaults.
   It is recommended for custom header keys to be in lowercase, to avoid sending
@@ -1124,7 +1127,8 @@ defmodule Phoenix.Controller do
       {"x-content-type-options", "nosniff"},
       {"x-download-options", "noopen"},
       {"x-permitted-cross-domain-policies", "none"},
-      {"cross-origin-window-policy", "deny"}
+      {"cross-origin-window-policy", "deny"},
+      {"permissions-policy", "interest-cohort=()"}
     ])
   end
 
